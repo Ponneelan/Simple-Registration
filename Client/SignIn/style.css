@@ -1,4 +1,59 @@
-*{
+* {
     padding: 0px;
     margin: 0px;
+}
+
+body {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.main {
+    background-color: #fff;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-div{
+    text-align: center;
+}
+#title{
+    margin-bottom: 50px;
+    font-weight: 800;
+}
+.input-feilds{
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon{
+    margin-right: 10px;
+    font-size: 30px;
+}
+.form-check-input{
+    margin-right: 10px;
+}
+.img-div img{
+    height: 300px;
+    width: auto;
+}
+#form-btn{
+    width: 100px;
+}
+#terms{
+    text-decoration: none;
+}
+
+@media (max-width:400px) {
+    .main{
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    .img-div img{
+        height: 200px;
+        width: 300px;
+    }
 }
