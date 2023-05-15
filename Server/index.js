@@ -21,10 +21,11 @@ const connection = mysql.createConnection({
 connection.connect();
 
 app.post('/signup', (req, res) => {
-    app.set('content-type', 'application-json');
-    const { mail, user, paddword } = req.body;
+    res.set('Content-Type', 'application/json');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    const { mail, user, password } = req.body;
     let sql = 'inser into users(user, mail, password) values (?,?,?)';
-    if ((mail !== null && mail !== undefined) || (user !== null && user !== undefined) || (paddword !== null && paddword !== undefined)) {
+    if ((mail !== null && mail !== undefined) || (user !== null && user !== undefined) || (password !== null && password !== undefined)) {
         connection.query(sql, [user, mail, password], (error, result) => {
             if (error) {
                 let response = { code: -1, message: "Server Error" };
@@ -67,3 +68,8 @@ app.post('/login', (req, res) => {
         res.json(response);
     }
 });
+
+
+app.listen(3000,()=>{
+    console.log('app running on port http://localhost:3000');
+})
