@@ -45,16 +45,16 @@ app.post('/signup', (req, res) => {
 app.post('/login', (req, res) => {
     app.set('content-type', 'application-json');
     const { mail, password } = req.body;
-    let sql = 'select mail, password from users where mail = ? and password = ?';
+    let sql = 'select mail, password from users where mail = ? and password = ? and isdeleted = ?';
     if ((mail !== null && mail !== undefined) || (password !== null && password !== undefined)) {
-        connection.query(sql, [mail, password], (error, result) => {
+        connection.query(sql, [mail, password,0], (error, result) => {
             if (error) {
                 let response = { code: -1, message: "Server Error" };
                 res.json(response);
                 console.log(error);
             } else {
                 if (result.length > 0) {
-                    let response = { code: 3, message: "Login Successfull" };
+                    let response = { code: 3, message: "Login Successfull",user:result[0]['mail'] };
                     res.json(response);
                 } else {
                     let response = { code: 4, message: "No User Found" };
